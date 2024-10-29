@@ -1,9 +1,10 @@
-import { UserAgent } from "@/views/userAgent";
 import { headers } from 'next/headers';
-const userAgent = headers().get('user-agent') || 'User agent not available';
+import { UserAgent } from "@/views/userAgent";
 
 const UserAgentRoot = () => {
-  return <UserAgent userAgent={userAgent}/>;
+  const userAgent = headers().get('user-agent') || 'User agent not available';
+  
+  return <UserAgent userAgent={userAgent} />;
 };
 
 export default UserAgentRoot;
