@@ -10,8 +10,7 @@ import { usePagination } from "@/hooks/usePagination";
 import { PRODUCTS_DATA } from "@/data/productsData";
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export const Products: React.FC = () => {
-  // configuring router and search params 
+export const Products: React.FC = () => {  
   const router = useRouter();  
   const searchParams = useSearchParams();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
