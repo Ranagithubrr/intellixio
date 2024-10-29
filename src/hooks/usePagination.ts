@@ -4,7 +4,11 @@ import { calculateTotalPages } from "@/utils/pagination/calculateTotalPages";
 import { getPaginatedItems } from "@/utils/pagination/getPaginatedItems";
 import { getNextPage } from "@/utils/pagination/getNextPage";
 
-export const usePagination = <T>({
+interface ItemWithId {
+  id: string; 
+}
+
+export const usePagination = <T extends ItemWithId>({
   items,
   itemsPerPage,
   initialPage = 1,
