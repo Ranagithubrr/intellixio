@@ -16,4 +16,5 @@ export interface PaginationResult<T> {
   totalPages: number;
   paginatedItems: T[];
   handlePageChange: (direction: "next" | "prev") => void;
+  setPageByProductId: (productId: string) => void;
 }

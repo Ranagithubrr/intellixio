@@ -12,7 +12,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 export const Products: React.FC = () => {
   // configuring router and search params 
-  const router = useRouter();
+  const router = useRouter();  
   const searchParams = useSearchParams();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const {
@@ -20,6 +20,7 @@ export const Products: React.FC = () => {
     totalPages,
     paginatedItems: paginatedProducts,
     handlePageChange,
+    setPageByProductId
   } = usePagination({ items: PRODUCTS_DATA, itemsPerPage: 5 });
 
   const handleOpenModal = useCallback((product: Product) => {
@@ -33,18 +34,23 @@ export const Products: React.FC = () => {
     setSelectedProduct(null);
     router.push(`/products`);
   }, [router]);
+  const handleProductClick = (productId: string) => {
+    setPageByProductId(productId);
+  };
 
   useEffect(() => {
     const productId = searchParams.get('product-id');
     if (productId) {
       const product = PRODUCTS_DATA.find((p) => parseInt(p.id) === parseInt(productId));
       if (product) {
-        setSelectedProduct(product);       
+        setSelectedProduct(product);
+        handleProductClick(productId)       
       }
     } else {
       setSelectedProduct(null);  
     }
   }, [searchParams]);
+  
   return (
     <div>
       <BackToHome />

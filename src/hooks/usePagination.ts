@@ -29,11 +29,23 @@ export const usePagination = <T>({
     },
     [totalPages]
   );
+    // setting current page based on product ID
+    const setPageByProductId = useCallback(
+      (productId: string) => {
+        const productIndex = items.findIndex((item) => item.id === productId);
+        if (productIndex !== -1) {
+          const page = Math.floor(productIndex / itemsPerPage) + 1; 
+          setCurrentPage(page); 
+        }
+      },
+      [items, itemsPerPage]
+    );
 
   return {
     currentPage,
     totalPages,
     paginatedItems,
     handlePageChange,
+    setPageByProductId
   };
 };
