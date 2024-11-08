@@ -1,0 +1,14 @@
+name: Call API Every Minute
+
+on:
+  schedule:
+    - cron: "*/3 * * * *"  # Runs every minute
+
+jobs:
+  call-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make API Request
+        run: |
+          curl -X GET "https://seo-page-backend.onrender.com"

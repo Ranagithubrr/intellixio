@@ -48,7 +48,7 @@ export const Products: React.FC = () => {
     } else {
       setSelectedProduct(null);  
     }
-    // eslint-disable-next-line
+    eslint-disable-next-line
   }, [searchParams]);
   
   return (
